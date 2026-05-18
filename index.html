@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hansa Holidays × Digital Scholar — AI Training Proposal</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ivory: #F9F5EF;
+    --warm-white: #FDFAF6;
+    --charcoal: #1C1C1C;
+    --deep: #111111;
+    --gold: #C8973A;
+    --gold-light: #E8B96A;
+    --gold-pale: #F5E6C8;
+    --muted: #7A7468;
+    --border: #E2D9CC;
+    --ds-yellow: #F5C518;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--ivory);
+    color: var(--charcoal);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    background: var(--deep);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -200px;
+    right: -200px;
+    width: 700px;
+    height: 700px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(200,151,58,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -150px;
+    left: -150px;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(200,151,58,0.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-badge {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid rgba(200,151,58,0.4);
+    padding: 8px 20px;
+    border-radius: 100px;
+    margin-bottom: 48px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.2s;
+  }
+
+  .brand-lockup {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    margin-bottom: 56px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.4s;
+  }
+
+  .brand-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(28px, 4vw, 42px);
+    font-weight: 300;
+    color: #fff;
+    letter-spacing: 1px;
+  }
+
+  .brand-name span { color: var(--gold); font-style: italic; }
+
+  .divider-x {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    color: var(--muted);
+    letter-spacing: 3px;
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(48px, 8vw, 96px);
+    font-weight: 300;
+    color: #fff;
+    text-align: center;
+    line-height: 1.05;
+    letter-spacing: -1px;
+    margin-bottom: 24px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.6s;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--gold-light);
+  }
+
+  .hero-subtitle {
+    font-size: 16px;
+    color: var(--muted);
+    text-align: center;
+    max-width: 560px;
+    line-height: 1.8;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.8s;
+  }
+
+  .hero-meta {
+    display: flex;
+    gap: 48px;
+    margin-top: 64px;
+    padding-top: 48px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 1s;
+  }
+
+  .meta-item { text-align: center; }
+
+  .meta-label {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+
+  .meta-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 400;
+    color: #fff;
+  }
+
+  .meta-value span { color: var(--gold); }
+
+  /* INTRO STRIP */
+  .intro-strip {
+    background: var(--gold);
+    padding: 28px 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+  }
+
+  .intro-strip p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--deep);
+    font-style: italic;
+    text-align: center;
+  }
+
+  /* SECTIONS */
+  section {
+    padding: 100px 60px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 5vw, 56px);
+    font-weight: 300;
+    color: var(--deep);
+    line-height: 1.1;
+    margin-bottom: 20px;
+  }
+
+  .section-title em { font-style: italic; color: var(--gold); }
+
+  .section-body {
+    font-size: 15px;
+    color: var(--muted);
+    max-width: 640px;
+    line-height: 1.9;
+  }
+
+  /* OBJECTIVE CARD */
+  .objective-card {
+    background: var(--deep);
+    border-radius: 4px;
+    padding: 56px 64px;
+    margin: 60px 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .objective-card::before {
+    content: '"';
+    position: absolute;
+    top: -20px;
+    left: 40px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 200px;
+    color: rgba(200,151,58,0.08);
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .objective-card p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(20px, 2.5vw, 28px);
+    font-weight: 300;
+    color: #fff;
+    line-height: 1.6;
+    font-style: italic;
+    position: relative;
+    z-index: 1;
+  }
+
+  .objective-card p span { color: var(--gold-light); font-style: normal; font-weight: 400; }
+
+  /* SESSIONS */
+  .sessions-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .session-card {
+    border-top: 1px solid var(--border);
+    padding: 56px 0;
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 40px;
+    align-items: start;
+    transition: all 0.3s ease;
+  }
+
+  .session-card:last-child { border-bottom: 1px solid var(--border); }
+
+  .session-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 64px;
+    font-weight: 300;
+    color: var(--border);
+    line-height: 1;
+    padding-top: 6px;
+    transition: color 0.3s ease;
+  }
+
+  .session-card:hover .session-number { color: var(--gold); }
+
+  .session-content {}
+
+  .session-tag {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 10px;
+  }
+
+  .session-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(24px, 3vw, 36px);
+    font-weight: 400;
+    color: var(--deep);
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+
+  .session-desc {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.8;
+    margin-bottom: 28px;
+    max-width: 600px;
+  }
+
+  .session-parts {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .part {
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 24px 28px;
+  }
+
+  .part-label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 10px;
+  }
+
+  .part-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--deep);
+    margin-bottom: 14px;
+  }
+
+  .part ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .part ul li {
+    font-size: 13.5px;
+    color: var(--muted);
+    padding-left: 16px;
+    position: relative;
+    line-height: 1.7;
+  }
+
+  .part ul li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-size: 10px;
+    top: 6px;
+  }
+
+  .hands-on {
+    background: var(--deep);
+    border-radius: 4px;
+    padding: 20px 24px;
+    margin-top: 16px;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+
+  .hands-on-icon {
+    font-size: 18px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .hands-on-content {}
+
+  .hands-on-label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 6px;
+  }
+
+  .hands-on-text {
+    font-size: 13px;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.7;
+  }
+
+  /* DELIVERABLES */
+  .deliverables-section {
+    background: var(--deep);
+    padding: 100px 60px;
+  }
+
+  .deliverables-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .deliverables-section .section-label { color: var(--gold); }
+  .deliverables-section .section-title { color: #fff; }
+
+  .deliverables-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-top: 48px;
+  }
+
+  .deliverable-item {
+    background: var(--deep);
+    padding: 32px 28px;
+    transition: background 0.3s ease;
+  }
+
+  .deliverable-item:hover { background: #1e1e1e; }
+
+  .deliverable-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px;
+    font-weight: 300;
+    color: rgba(200,151,58,0.3);
+    margin-bottom: 12px;
+    line-height: 1;
+  }
+
+  .deliverable-text {
+    font-size: 14px;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.7;
+  }
+
+  .deliverable-text strong {
+    display: block;
+    color: #fff;
+    font-weight: 400;
+    margin-bottom: 4px;
+    font-size: 15px;
+  }
+
+  /* ABOUT */
+  .about-section {
+    padding: 100px 60px;
+    background: var(--warm-white);
+  }
+
+  .about-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .about-visual {
+    position: relative;
+  }
+
+  .about-card {
+    background: var(--deep);
+    border-radius: 4px;
+    padding: 48px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .about-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--gold), var(--gold-light));
+  }
+
+  .about-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 40px;
+    font-weight: 400;
+    color: #fff;
+    margin-bottom: 4px;
+  }
+
+  .about-role {
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 28px;
+  }
+
+  .about-stats {
+    display: flex;
+    gap: 28px;
+    padding-top: 28px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .stat { }
+
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px;
+    font-weight: 400;
+    color: var(--gold-light);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .stat-label {
+    font-size: 11px;
+    color: rgba(255,255,255,0.4);
+    letter-spacing: 1px;
+  }
+
+  .about-text {}
+
+  .about-text .section-body { margin-top: 24px; }
+
+  .client-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 28px;
+  }
+
+  .client-pill {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    color: var(--muted);
+    border: 1px solid var(--border);
+    padding: 6px 14px;
+    border-radius: 100px;
+  }
+
+  /* FOOTER */
+  .footer {
+    background: var(--deep);
+    padding: 60px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .footer-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    color: rgba(255,255,255,0.4);
+    font-weight: 300;
+  }
+
+  .footer-contact {
+    text-align: right;
+  }
+
+  .footer-contact a {
+    display: block;
+    font-size: 13px;
+    color: var(--gold);
+    text-decoration: none;
+    margin-bottom: 4px;
+    transition: color 0.2s;
+  }
+
+  .footer-contact a:hover { color: var(--gold-light); }
+
+  .footer-note {
+    font-size: 11px;
+    color: rgba(255,255,255,0.2);
+    margin-top: 8px;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    section { padding: 60px 24px; }
+    .hero { padding: 60px 24px; }
+    .hero-meta { gap: 24px; flex-wrap: wrap; justify-content: center; }
+    .intro-strip { padding: 24px; }
+    .session-card { grid-template-columns: 1fr; gap: 16px; }
+    .session-number { font-size: 40px; }
+    .about-inner { grid-template-columns: 1fr; gap: 40px; }
+    .deliverables-section { padding: 60px 24px; }
+    .about-section { padding: 60px 24px; }
+    .footer { padding: 40px 24px; }
+    .footer-inner { flex-direction: column; gap: 24px; text-align: center; }
+    .footer-contact { text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge">AI Training Proposal · 2025</div>
+  <div class="brand-lockup">
+    <div class="brand-name"><span>Hansa</span> Holidays</div>
+    <div class="divider-x">×</div>
+    <div class="brand-name">Digital <span>Scholar</span></div>
+  </div>
+  <h1 class="hero-title">The <em>Future</em><br>of Travel,<br>Built by Your Team</h1>
+  <p class="hero-subtitle">A bespoke AI training programme designed specifically for the Hansa Holidays leisure team — from prompt engineering to polished client proposals.</p>
+  <div class="hero-meta">
+    <div class="meta-item">
+      <div class="meta-label">Programme</div>
+      <div class="meta-value"><span>4</span> Sessions</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">Total Hours</div>
+      <div class="meta-value"><span>12</span> Hours</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">Format</div>
+      <div class="meta-value">Online</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">Audience</div>
+      <div class="meta-value">Leisure Team</div>
+    </div>
+  </div>
+</div>
+
+<!-- INTRO STRIP -->
+<div class="intro-strip">
+  <p>"AI doesn't replace the Hansa touch. It <strong>protects it</strong> — by freeing your team to spend more time on the things only humans can do."</p>
+</div>
+
+<!-- OBJECTIVE -->
+<section>
+  <div class="fade-in">
+    <div class="section-label">Programme Objective</div>
+    <h2 class="section-title">Where your team<br>is going <em>after</em> this.</h2>
+  </div>
+  <div class="objective-card fade-in">
+    <p>Move the Hansa Holidays team from <span>"using free AI occasionally"</span> to building complete, polished, client-ready itineraries and proposals using AI as a daily work partner — with consistent quality across every consultant, regardless of experience level.</p>
+  </div>
+</section>
+
+<!-- SESSIONS -->
+<section>
+  <div class="fade-in">
+    <div class="section-label">Curriculum</div>
+    <h2 class="section-title">Four sessions.<br><em>One transformation.</em></h2>
+    <p class="section-body">Each session builds on the last — from understanding AI, to using it for itineraries, to mastering Claude as a full business system.</p>
+  </div>
+
+  <div class="sessions-wrapper" style="margin-top: 60px;">
+
+    <!-- SESSION 1 -->
+    <div class="session-card fade-in">
+      <div class="session-number">01</div>
+      <div class="session-content">
+        <div class="session-tag">Session One</div>
+        <h3 class="session-title">AI Literacy &<br>Prompt Engineering</h3>
+        <p class="session-desc">The team already uses free ChatGPT and Claude. This session doesn't start from zero — it resets how they think about AI and gives them a structured method to get dramatically better outputs, every single time.</p>
+        <div class="session-parts">
+          <div class="part">
+            <div class="part-label">Part A</div>
+            <div class="part-title">AI Literacy</div>
+            <ul>
+              <li>Why free-tier usage gives inconsistent results, and what actually changes with better usage</li>
+              <li>ChatGPT vs Claude vs Gemini: which tool wins for which travel task</li>
+              <li>The shift from "asking AI" to "briefing AI like a junior consultant"</li>
+              <li>Data privacy basics: what to share and what should never go in</li>
+              <li>Understanding hallucinations: catching wrong information before it reaches a client</li>
+            </ul>
+          </div>
+          <div class="part">
+            <div class="part-label">Part B</div>
+            <div class="part-title">Prompt Engineering with the CRAFT Framework</div>
+            <ul>
+              <li>Why inconsistent outputs are a prompting problem, not a tool problem</li>
+              <li>The CRAFT Framework applied to travel: Curate, Refine, Audience, Feedback, Track</li>
+              <li>How to brief AI using client context from their SOP intake form</li>
+              <li>Role-based prompting for luxury travel consultants</li>
+              <li>Chained prompting: building itineraries one step at a time</li>
+              <li>Building reusable prompt templates for honeymoon, family, anniversary, multigenerational trips</li>
+            </ul>
+          </div>
+          <div class="hands-on">
+            <div class="hands-on-icon">✦</div>
+            <div class="hands-on-content">
+              <div class="hands-on-label">Hands-On Activity</div>
+              <div class="hands-on-text">Each consultant takes a real or mock client brief from the SOP form and builds a complete Day 1 itinerary draft using CRAFT. They leave with at least two saved prompt templates ready to use the next morning.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SESSION 2 -->
+    <div class="session-card fade-in">
+      <div class="session-number">02</div>
+      <div class="session-content">
+        <div class="session-tag">Session Two</div>
+        <h3 class="session-title">Building Itineraries<br>with AI</h3>
+        <p class="session-desc">The biggest time sinks are building itineraries from scratch and polishing raw supplier content. This session solves both — and standardises quality across the entire team.</p>
+        <div class="session-parts">
+          <div class="part">
+            <div class="part-label">What Will Be Covered</div>
+            <div class="part-title">From Supplier Content to Client-Ready Proposals</div>
+            <ul>
+              <li>Taking raw supplier content and rewriting it to sound like Hansa, not a brochure</li>
+              <li>Structuring day-by-day itineraries so they read beautifully, not like copied spreadsheets</li>
+              <li>Adding sensory language and emotional resonance to destination descriptions</li>
+              <li>Maintaining consistency: getting every consultant to produce the same quality of writing</li>
+              <li>Building destination description banks for Hansa's top destinations (Italy, Greece, Norway, Jordan, Scandinavia)</li>
+              <li>Adapting one base itinerary for multiple client profiles instantly: honeymoon, family, multigenerational</li>
+              <li>Using AI to cross-check itinerary routing, pacing, and logical gaps before client delivery</li>
+            </ul>
+          </div>
+          <div class="hands-on">
+            <div class="hands-on-icon">✦</div>
+            <div class="hands-on-content">
+              <div class="hands-on-label">Hands-On Activity</div>
+              <div class="hands-on-text">Each consultant takes an actual supplier-provided itinerary, pastes it into AI, and transforms it into a polished Hansa-quality document. They also build one destination description for a city they frequently sell — saved and ready to reuse.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SESSION 3 -->
+    <div class="session-card fade-in">
+      <div class="session-number">03</div>
+      <div class="session-content">
+        <div class="session-tag">Session Three</div>
+        <h3 class="session-title">Claude Mastery<br>for Hansa</h3>
+        <p class="session-desc">This is where Claude stops being a chat tool and becomes a proper business system for the team — including connecting Canva for end-to-end proposal design.</p>
+        <div class="session-parts">
+          <div class="part">
+            <div class="part-label">Part A</div>
+            <div class="part-title">Understanding Claude's Ecosystem</div>
+            <ul>
+              <li>Claude vs ChatGPT: why Claude is built for delegation and long-form work</li>
+              <li>The three Claude models: Haiku, Sonnet, Opus — which to use for which task</li>
+              <li>Claude Pro vs free version: what actually unlocks for a client-facing team</li>
+            </ul>
+          </div>
+          <div class="part">
+            <div class="part-label">Part B</div>
+            <div class="part-title">Claude's Core Features for Hansa</div>
+            <ul>
+              <li>Projects: creating a dedicated Hansa project with client context, destination knowledge, and tone built in</li>
+              <li>Memory and Personal Preferences: teaching Claude about Hansa's style and SOP so every prompt starts right</li>
+              <li>Artifacts: generating formatted documents, itinerary layouts, and proposals directly in chat</li>
+              <li>Document Upload: uploading supplier PDFs and asking Claude to rewrite them in client-ready language</li>
+              <li>Deep Research: pulling accurate destination, visa, and hotel information without manual browsing</li>
+              <li>Extended Thinking Mode: for complex multi-country itineraries with tight routing and logistics</li>
+            </ul>
+          </div>
+          <div class="part">
+            <div class="part-label">Part C</div>
+            <div class="part-title">Connectors and Canva Integration</div>
+            <ul>
+              <li>What Connectors are: how Claude connects to external tools and acts on real data</li>
+              <li>Step-by-step live setup of the Canva connector inside Claude</li>
+              <li>Using Claude and Canva together: Claude generates content, Canva renders the designed proposal</li>
+              <li>Building a repeatable Hansa proposal template: cover, day-by-day, hotel highlights, pricing summary</li>
+              <li>Duplicating and adapting one template for different destinations quickly</li>
+              <li>Saving the entire workflow so any consultant can run it — not just the most experienced one</li>
+            </ul>
+          </div>
+          <div class="hands-on">
+            <div class="hands-on-icon">✦</div>
+            <div class="hands-on-content">
+              <div class="hands-on-label">Hands-On Activity</div>
+              <div class="hands-on-text">Each consultant connects Canva to their Claude account, takes the itinerary built in Session 2, and produces a finished designed proposal document. They leave with a working system they can use on a real client the very next day.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SESSION 4 -->
+    <div class="session-card fade-in">
+      <div class="session-number">04</div>
+      <div class="session-content">
+        <div class="session-tag">Session Four</div>
+        <h3 class="session-title">Client Communication<br>& Social Media with AI</h3>
+        <p class="session-desc">Covering two remaining areas: making every client touchpoint faster and more consistent, and giving Hansa a realistic path to owning their social media without relying on short-term external partners.</p>
+        <div class="session-parts">
+          <div class="part">
+            <div class="part-label">Part A</div>
+            <div class="part-title">Client Communication</div>
+            <ul>
+              <li>Writing faster, warmer inquiry response emails while keeping the personal Hansa tone</li>
+              <li>Using AI to summarise a client call into a structured brief so nothing is lost</li>
+              <li>Drafting WhatsApp and email follow-ups that do not feel copy-pasted</li>
+              <li>Handling common client objections in writing: pricing pushback, comparison shopping, delayed decisions</li>
+              <li>Building a template library: inquiry acknowledgment, itinerary delivery, payment reminder, post-trip thank you</li>
+            </ul>
+          </div>
+          <div class="part">
+            <div class="part-label">Part B</div>
+            <div class="part-title">Social Media Content with AI</div>
+            <ul>
+              <li>Using AI to generate Instagram captions, destination posts, and travel inspiration content</li>
+              <li>Repurposing client testimonials into social-ready content</li>
+              <li>Using Canva AI to design destination posts without needing a dedicated designer</li>
+              <li>Building a 30-day Instagram content calendar using AI</li>
+              <li>What content strategy works for a boutique luxury referral-driven brand</li>
+            </ul>
+          </div>
+          <div class="hands-on">
+            <div class="hands-on-icon">✦</div>
+            <div class="hands-on-content">
+              <div class="hands-on-label">Hands-On Activity</div>
+              <div class="hands-on-text">Each consultant creates 3 ready-to-post Instagram captions and one designed destination post for a city they frequently sell.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- DELIVERABLES -->
+<div class="deliverables-section">
+  <div class="deliverables-inner">
+    <div class="fade-in">
+      <div class="section-label">What Your Team Walks Away With</div>
+      <h2 class="section-title" style="color:#fff;">Not just knowledge.<br><em>Working assets.</em></h2>
+    </div>
+    <div class="deliverables-grid">
+      <div class="deliverable-item fade-in">
+        <div class="deliverable-num">01</div>
+        <div class="deliverable-text"><strong>Prompt Template Library</strong>Personalised CRAFT prompt templates for honeymoon, family, anniversary, and multigenerational trips.</div>
+      </div>
+      <div class="deliverable-item fade-in">
+        <div class="deliverable-num">02</div>
+        <div class="deliverable-text"><strong>Destination Description Bank</strong>Polished, reusable destination content for Hansa's top 5 most-sold destinations.</div>
+      </div>
+      <div class="deliverable-item fade-in">
+        <div class="deliverable-num">03</div>
+        <div class="deliverable-text"><strong>Claude Project Setup</strong>A fully configured Claude project with Hansa's tone, SOP, and destination knowledge loaded in.</div>
+      </div>
+      <div class="deliverable-item fade-in">
+        <div class="deliverable-num">04</div>
+        <div class="deliverable-text"><strong>Canva Proposal Template</strong>Canva connected to Claude with a working, reusable itinerary proposal template.</div>
+      </div>
+      <div class="deliverable-item fade-in">
+        <div class="deliverable-num">05</div>
+        <div class="deliverable-text"><strong>Complete Client Proposal</strong>At least one full end-to-end client proposal built and designed during the training itself.</div>
+      </div>
+      <div class="deliverable-item fade-in">
+        <div class="deliverable-num">06</div>
+        <div class="deliverable-text"><strong>Communication Template Kit</strong>Email and WhatsApp templates for every common client scenario.</div>
+      </div>
+      <div class="deliverable-item fade-in">
+        <div class="deliverable-num">07</div>
+        <div class="deliverable-text"><strong>30-Day Content Calendar</strong>A ready-to-publish Instagram content calendar built during the training.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT RISHI -->
+<div class="about-section">
+  <div class="about-inner">
+    <div class="about-visual fade-in">
+      <div class="about-card">
+        <div class="about-name">Rishi Jain</div>
+        <div class="about-role">Co-Founder, Digital Scholar · AI Trainer</div>
+        <div class="about-stats">
+          <div class="stat">
+            <div class="stat-num">50+</div>
+            <div class="stat-label">Organisations Trained</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">12+</div>
+            <div class="stat-label">Years Experience</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">#1</div>
+            <div class="stat-label">Digital Marketing Institute 2024</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="about-text fade-in">
+      <div class="section-label">About the Trainer</div>
+      <h2 class="section-title">Training that's<br><em>practitioner-led.</em></h2>
+      <p class="section-body">Rishi Jain is the Co-Founder of Digital Scholar, recognised as India's Best Digital Marketing Institute in 2024. He has delivered corporate AI training to teams across hospitality, FMCG, finance, manufacturing, and edtech. Every session is built around live demonstrations, hands-on exercises, and workflows participants can use the same day.</p>
+      <div class="client-list">
+        <span class="client-pill">Deloitte</span>
+        <span class="client-pill">Lakme</span>
+        <span class="client-pill">IDP Education</span>
+        <span class="client-pill">UTI Mutual Fund</span>
+        <span class="client-pill">Autodesk</span>
+        <span class="client-pill">Publicis Sapient</span>
+        <span class="client-pill">Axis Bank</span>
+        <span class="client-pill">Atlas Copco</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">Digital Scholar</div>
+    <div class="footer-contact">
+      <a href="mailto:bde@digitalscholar.in">bde@digitalscholar.in</a>
+      <a href="https://digitalscholar.in" target="_blank">digitalscholar.in</a>
+      <div class="footer-note">Prepared for Hansa Holidays · Hyderabad</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
